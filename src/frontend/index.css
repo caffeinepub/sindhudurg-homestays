@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Font Faces ────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 200 800;
+  font-style: normal;
+}
+
+/* ── Design Tokens ─────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Forest green palette */
+    --primary: 0.42 0.13 145;
+    --primary-foreground: 0.98 0.01 90;
+
+    /* Ocean teal */
+    --secondary: 0.52 0.10 205;
+    --secondary-foreground: 0.98 0.01 90;
+
+    /* Sunset amber */
+    --accent: 0.72 0.16 65;
+    --accent-foreground: 0.15 0.02 30;
+
+    /* Warm sand/cream background */
+    --background: 0.97 0.015 85;
+    --foreground: 0.18 0.02 260;
+
+    /* Cards slightly warmer */
+    --card: 0.99 0.01 80;
+    --card-foreground: 0.18 0.02 260;
+
+    --popover: 0.99 0.01 80;
+    --popover-foreground: 0.18 0.02 260;
+
+    /* Muted sage */
+    --muted: 0.88 0.04 145;
+    --muted-foreground: 0.45 0.04 145;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.84 0.05 145;
+    --input: 0.84 0.05 145;
+    --ring: 0.42 0.13 145;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.52 0.10 205;
+    --chart-3: 0.42 0.13 145;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.72 0.16 65;
+
+    --sidebar: 0.97 0.015 85;
+    --sidebar-foreground: 0.18 0.02 260;
+    --sidebar-primary: 0.42 0.13 145;
+    --sidebar-primary-foreground: 0.98 0.01 90;
+    --sidebar-accent: 0.88 0.04 145;
+    --sidebar-accent-foreground: 0.18 0.02 260;
+    --sidebar-border: 0.84 0.05 145;
+    --sidebar-ring: 0.42 0.13 145;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+/* ── Custom utility classes ────────────────────────────────────── */
+@layer utilities {
+  .font-display {
+    font-family: "Fraunces", Georgia, serif;
+  }
+
+  .font-body {
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Tropical gradient mesh backgrounds */
+  .bg-jungle-mesh {
+    background-color: oklch(0.42 0.13 145);
+    background-image:
+      radial-gradient(ellipse at 0% 100%, oklch(0.52 0.10 205 / 0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 100% 0%, oklch(0.72 0.16 65 / 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, oklch(0.38 0.12 155 / 0.5) 0%, transparent 70%);
+  }
+
+  .bg-sunset-mesh {
+    background-color: oklch(0.22 0.04 30);
+    background-image:
+      radial-gradient(ellipse at 0% 100%, oklch(0.42 0.13 145 / 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 0%, oklch(0.72 0.16 65 / 0.5) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, oklch(0.52 0.10 205 / 0.25) 0%, transparent 55%);
+  }
+
+  .bg-sand-texture {
+    background-color: oklch(0.97 0.015 85);
+    background-image:
+      radial-gradient(ellipse at 30% 20%, oklch(0.88 0.04 145 / 0.5) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 70%, oklch(0.72 0.16 65 / 0.15) 0%, transparent 50%);
+  }
+
+  /* Monsoon green */
+  .bg-monsoon-green {
+    background-color: oklch(0.25 0.08 145);
+    background-image:
+      radial-gradient(ellipse at 0% 0%, oklch(0.42 0.13 145 / 0.6) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 100%, oklch(0.52 0.10 205 / 0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 50%, oklch(0.30 0.10 150 / 0.8) 0%, transparent 70%);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.97 0.015 85);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.42 0.13 145);
+    border-radius: 3px;
+  }
+}
