@@ -6,7 +6,7 @@ import { Category, usePackagesByCategory } from "@/hooks/useQueries";
 import { Binoculars, CloudRain, Eye, Waves } from "lucide-react";
 import { motion } from "motion/react";
 import { SiWhatsapp } from "react-icons/si";
-import monsoonSindhudurg from "/assets/generated/monsoon-sindhudurg.dim_800x600.jpg";
+import monsoonSindhudurg from "../../../public/assets/generated/monsoon-sindhudurg.dim_800x600.jpg";
 
 const activities = [
   {

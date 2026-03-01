@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Packages", href: "#packages" },
   { label: "Pre-Wedding", href: "#prewedding" },
   { label: "Monsoon", href: "#monsoon" },
+  { label: "Places", href: "#places" },
   { label: "Gallery", href: "#gallery" },
   { label: "Payment", href: "#payment" },
   { label: "Contact", href: "#contact" },

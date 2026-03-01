@@ -11,6 +11,7 @@ import { IDL } from '@icp-sdk/core/candid';
 export const Category = IDL.Variant({
   'couples' : IDL.Null,
   'prewedding' : IDL.Null,
+  'senior' : IDL.Null,
   'monsoon' : IDL.Null,
   'friends' : IDL.Null,
   'family' : IDL.Null,
@@ -85,6 +86,7 @@ export const idlFactory = ({ IDL }) => {
   const Category = IDL.Variant({
     'couples' : IDL.Null,
     'prewedding' : IDL.Null,
+    'senior' : IDL.Null,
     'monsoon' : IDL.Null,
     'friends' : IDL.Null,
     'family' : IDL.Null,

@@ -7,7 +7,9 @@ import Array "mo:core/Array";
 import Time "mo:core/Time";
 import Order "mo:core/Order";
 import Nat "mo:core/Nat";
+import Migration "migration";
 
+(with migration = Migration.run)
 actor {
   type Category = {
     #couples;
@@ -15,6 +17,7 @@ actor {
     #friends;
     #prewedding;
     #monsoon;
+    #senior;
   };
 
   module Category {
@@ -33,6 +36,9 @@ actor {
         case (#prewedding, _) { #less };
         case (_, #prewedding) { #greater };
         case (#monsoon, #monsoon) { #equal };
+        case (#monsoon, _) { #less };
+        case (_, #monsoon) { #greater };
+        case (#senior, #senior) { #equal };
       };
     };
   };
@@ -48,12 +54,6 @@ actor {
     duration : Text;
     maxGuests : Nat;
     isAvailable : Bool;
-  };
-
-  module Package {
-    public func compareByCategory(package1 : Package, package2 : Package) : Order.Order {
-      Category.compare(package1.category, package2.category);
-    };
   };
 
   type GalleryImage = {
@@ -199,6 +199,30 @@ actor {
         isAvailable = true;
       },
     );
+
+    packages.add(
+      6,
+      {
+        id = 6;
+        name = "Senior Citizen Tranquility Package";
+        category = #senior;
+        description = "Peaceful coastal retreat designed for senior citizens with comfortable accommodation, gentle nature walks, temple visits, Ayurvedic wellness, and local culture experiences.";
+        pricePerPerson = 3500;
+        priceGroup = 12000;
+        inclusions = [
+          "Comfortable air-conditioned homestay",
+          "Temple & heritage tours",
+          "Gentle beach walks",
+          "Ayurvedic massage",
+          "Local cuisine & healthy meals",
+          "Assisted sightseeing",
+          "Medical support on call",
+        ];
+        duration = "3 days 2 nights";
+        maxGuests = 4;
+        isAvailable = true;
+      },
+    );
   };
 
   func seedGalleryImages() {
@@ -232,6 +256,12 @@ actor {
         category = #monsoon;
         imageUrl = "https://example.com/monsoon1.jpg";
         caption = "Waterfall hike during monsoon season";
+      },
+      {
+        id = 6;
+        category = #senior;
+        imageUrl = "https://example.com/senior1.jpg";
+        caption = "Peaceful homestay retreat for seniors";
       },
     ];
 
@@ -268,6 +298,15 @@ actor {
         message = "Awesome friends getaway, loved the adventure activities!";
         category = #friends;
         date = "2024-02-15";
+      },
+      {
+        id = 4;
+        name = "Usha Kulkarni";
+        location = "Kolhapur";
+        rating = 5;
+        message = "Wonderful experience, staff is very caring. Highly recommend for all seniors!";
+        category = #senior;
+        date = "2024-05-10";
       },
     ];
 

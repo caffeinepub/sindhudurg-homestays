@@ -48,6 +48,7 @@ export interface Testimonial {
 export enum Category {
     couples = "couples",
     prewedding = "prewedding",
+    senior = "senior",
     monsoon = "monsoon",
     friends = "friends",
     family = "family"

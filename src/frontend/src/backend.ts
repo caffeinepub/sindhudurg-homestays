@@ -130,6 +130,7 @@ export interface Testimonial {
 export enum Category {
     couples = "couples",
     prewedding = "prewedding",
+    senior = "senior",
     monsoon = "monsoon",
     friends = "friends",
     family = "family"
@@ -391,13 +392,15 @@ function from_candid_variant_n5(_uploadFile: (file: ExternalBlob) => Promise<Uin
 } | {
     prewedding: null;
 } | {
+    senior: null;
+} | {
     monsoon: null;
 } | {
     friends: null;
 } | {
     family: null;
 }): Category {
-    return "couples" in value ? Category.couples : "prewedding" in value ? Category.prewedding : "monsoon" in value ? Category.monsoon : "friends" in value ? Category.friends : "family" in value ? Category.family : value;
+    return "couples" in value ? Category.couples : "prewedding" in value ? Category.prewedding : "senior" in value ? Category.senior : "monsoon" in value ? Category.monsoon : "friends" in value ? Category.friends : "family" in value ? Category.family : value;
 }
 function from_candid_vec_n1(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: Array<_GalleryImage>): Array<GalleryImage> {
     return value.map((x)=>from_candid_GalleryImage_n2(_uploadFile, _downloadFile, x));
@@ -416,6 +419,8 @@ function to_candid_variant_n13(_uploadFile: (file: ExternalBlob) => Promise<Uint
 } | {
     prewedding: null;
 } | {
+    senior: null;
+} | {
     monsoon: null;
 } | {
     friends: null;
@@ -426,6 +431,8 @@ function to_candid_variant_n13(_uploadFile: (file: ExternalBlob) => Promise<Uint
         couples: null
     } : value == Category.prewedding ? {
         prewedding: null
+    } : value == Category.senior ? {
+        senior: null
     } : value == Category.monsoon ? {
         monsoon: null
     } : value == Category.friends ? {

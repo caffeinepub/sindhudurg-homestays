@@ -9,14 +9,16 @@ import { Check, Clock, ExternalLink, Users } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { SiWhatsapp } from "react-icons/si";
-import couplesBeachDinner from "/assets/generated/couples-beach-dinner.dim_800x600.jpg";
-import couplesBoatRide from "/assets/generated/couples-boat-ride.dim_800x600.jpg";
-import familyCookingClass from "/assets/generated/family-cooking-class.dim_800x600.jpg";
-import familyFarmTour from "/assets/generated/family-farm-tour.dim_800x600.jpg";
-import friendsBonfireNight from "/assets/generated/friends-bonfire-night.dim_800x600.jpg";
-import friendsWaterfallTrek from "/assets/generated/friends-waterfall-trek.dim_800x600.jpg";
-import preweddingBeach from "/assets/generated/prewedding-beach.dim_800x600.jpg";
-import preweddingFort from "/assets/generated/prewedding-fort.dim_800x600.jpg";
+import couplesBeachDinner from "../../../public/assets/generated/couples-beach-dinner.dim_800x600.jpg";
+import couplesBoatRide from "../../../public/assets/generated/couples-boat-ride.dim_800x600.jpg";
+import familyCookingClass from "../../../public/assets/generated/family-cooking-class.dim_800x600.jpg";
+import familyFarmTour from "../../../public/assets/generated/family-farm-tour.dim_800x600.jpg";
+import friendsBonfireNight from "../../../public/assets/generated/friends-bonfire-night.dim_800x600.jpg";
+import friendsWaterfallTrek from "../../../public/assets/generated/friends-waterfall-trek.dim_800x600.jpg";
+import preweddingBeach from "../../../public/assets/generated/prewedding-beach.dim_800x600.jpg";
+import preweddingFort from "../../../public/assets/generated/prewedding-fort.dim_800x600.jpg";
+import seniorBeachWalk from "../../../public/assets/generated/senior-beach-walk.dim_800x600.jpg";
+import seniorTempleVisit from "../../../public/assets/generated/senior-temple-visit.dim_800x600.jpg";
 
 const categoryConfig = {
   [Category.couples]: {
@@ -42,6 +44,12 @@ const categoryConfig = {
     images: [preweddingFort, preweddingBeach],
     tagColor: "bg-purple-100 text-purple-700",
     emoji: "💍",
+  },
+  [Category.senior]: {
+    label: "Senior",
+    images: [seniorBeachWalk, seniorTempleVisit],
+    tagColor: "bg-teal-100 text-teal-700",
+    emoji: "🧓",
   },
 };
 
@@ -235,7 +243,7 @@ export default function PackagesSection() {
           onValueChange={(v) => setActiveTab(v as Category)}
           className="w-full"
         >
-          <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full max-w-2xl mx-auto mb-10 bg-muted p-1 h-auto gap-1">
+          <TabsList className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full max-w-2xl mx-auto mb-10 bg-muted p-1 h-auto gap-1">
             {Object.entries(categoryConfig).map(([cat, { label, emoji }]) => (
               <TabsTrigger
                 key={cat}

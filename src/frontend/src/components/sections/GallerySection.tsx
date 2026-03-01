@@ -3,16 +3,16 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import couplesBeachDinner from "/assets/generated/couples-beach-dinner.dim_800x600.jpg";
-import couplesBoatRide from "/assets/generated/couples-boat-ride.dim_800x600.jpg";
-import familyCookingClass from "/assets/generated/family-cooking-class.dim_800x600.jpg";
-import familyFarmTour from "/assets/generated/family-farm-tour.dim_800x600.jpg";
-import friendsBonfireNight from "/assets/generated/friends-bonfire-night.dim_800x600.jpg";
-import friendsWaterfallTrek from "/assets/generated/friends-waterfall-trek.dim_800x600.jpg";
-import heroTarkarlSunset from "/assets/generated/hero-tarkarli-sunset.dim_1600x900.jpg";
-import monsoonSindhudurg from "/assets/generated/monsoon-sindhudurg.dim_800x600.jpg";
-import preweddingBeach from "/assets/generated/prewedding-beach.dim_800x600.jpg";
-import preweddingFort from "/assets/generated/prewedding-fort.dim_800x600.jpg";
+import couplesBeachDinner from "../../../public/assets/generated/couples-beach-dinner.dim_800x600.jpg";
+import couplesBoatRide from "../../../public/assets/generated/couples-boat-ride.dim_800x600.jpg";
+import familyCookingClass from "../../../public/assets/generated/family-cooking-class.dim_800x600.jpg";
+import familyFarmTour from "../../../public/assets/generated/family-farm-tour.dim_800x600.jpg";
+import friendsBonfireNight from "../../../public/assets/generated/friends-bonfire-night.dim_800x600.jpg";
+import friendsWaterfallTrek from "../../../public/assets/generated/friends-waterfall-trek.dim_800x600.jpg";
+import heroTarkarlSunset from "../../../public/assets/generated/hero-tarkarli-sunset.dim_1600x900.jpg";
+import monsoonSindhudurg from "../../../public/assets/generated/monsoon-sindhudurg.dim_800x600.jpg";
+import preweddingBeach from "../../../public/assets/generated/prewedding-beach.dim_800x600.jpg";
+import preweddingFort from "../../../public/assets/generated/prewedding-fort.dim_800x600.jpg";
 
 const galleryItems = [
   {

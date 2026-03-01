@@ -1,12 +1,12 @@
 import { ExternalLink, Heart, MessageCircle } from "lucide-react";
 import { motion } from "motion/react";
 import { SiInstagram } from "react-icons/si";
-import couplesBeachDinner from "/assets/generated/couples-beach-dinner.dim_800x600.jpg";
-import familyFarmTour from "/assets/generated/family-farm-tour.dim_800x600.jpg";
-import friendsWaterfallTrek from "/assets/generated/friends-waterfall-trek.dim_800x600.jpg";
-import heroTarkarlSunset from "/assets/generated/hero-tarkarli-sunset.dim_1600x900.jpg";
-import monsoonSindhudurg from "/assets/generated/monsoon-sindhudurg.dim_800x600.jpg";
-import preweddingFort from "/assets/generated/prewedding-fort.dim_800x600.jpg";
+import couplesBeachDinner from "../../../public/assets/generated/couples-beach-dinner.dim_800x600.jpg";
+import familyFarmTour from "../../../public/assets/generated/family-farm-tour.dim_800x600.jpg";
+import friendsWaterfallTrek from "../../../public/assets/generated/friends-waterfall-trek.dim_800x600.jpg";
+import heroTarkarlSunset from "../../../public/assets/generated/hero-tarkarli-sunset.dim_1600x900.jpg";
+import monsoonSindhudurg from "../../../public/assets/generated/monsoon-sindhudurg.dim_800x600.jpg";
+import preweddingFort from "../../../public/assets/generated/prewedding-fort.dim_800x600.jpg";
 
 const INSTAGRAM_URL = "https://www.instagram.com/sindhudurg_homestays";
 

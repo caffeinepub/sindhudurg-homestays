@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Camera, MapPin, Star } from "lucide-react";
 import { motion } from "motion/react";
 import { SiWhatsapp } from "react-icons/si";
-import preweddingBeach from "/assets/generated/prewedding-beach.dim_800x600.jpg";
-import preweddingFort from "/assets/generated/prewedding-fort.dim_800x600.jpg";
+import preweddingBeach from "../../../public/assets/generated/prewedding-beach.dim_800x600.jpg";
+import preweddingFort from "../../../public/assets/generated/prewedding-fort.dim_800x600.jpg";
 
 const locations = [
   { name: "Tarkarli Beach", desc: "Golden shores at sunset" },

@@ -10,11 +10,18 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useAllPackages, useSubmitInquiry } from "@/hooks/useQueries";
-import { Loader2, Send } from "lucide-react";
+import { ExternalLink, Loader2, Send } from "lucide-react";
 import { motion } from "motion/react";
 import { useState } from "react";
-import { SiWhatsapp } from "react-icons/si";
+import { SiGoogle, SiWhatsapp } from "react-icons/si";
 import { toast } from "sonner";
+
+// ── Replace this URL with your actual Google Form link ──────────────────────
+const GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSe_REPLACE_WITH_YOUR_FORM_ID/viewform?embedded=true";
+const GOOGLE_FORM_EXTERNAL_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSe_REPLACE_WITH_YOUR_FORM_ID/viewform";
+// ────────────────────────────────────────────────────────────────────────────
 
 interface FormData {
   name: string;
@@ -37,6 +44,7 @@ const initialForm: FormData = {
 };
 
 export default function BookingFormSection() {
+  const [activeTab, setActiveTab] = useState<"form" | "google">("form");
   const [form, setForm] = useState<FormData>(initialForm);
   const { data: packages, isLoading: packagesLoading } = useAllPackages();
   const { mutateAsync: submitInquiry, isPending } = useSubmitInquiry();
@@ -113,7 +121,7 @@ export default function BookingFormSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
             <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-3">
               Ready to Book?
@@ -124,192 +132,274 @@ export default function BookingFormSection() {
               <span className="italic text-accent">Inquiry</span>
             </h2>
             <p className="text-white/75 font-body">
-              Fill in the form below and we'll connect you via WhatsApp within 2
-              hours.
+              Choose how you'd like to reach us — WhatsApp form or Google Form.
             </p>
           </motion.div>
 
-          {/* Form */}
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
+          {/* Tab switcher */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="bg-card rounded-3xl p-6 md:p-10 shadow-2xl border border-border"
+            className="flex justify-center mb-8"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Name */}
-              <div className="space-y-2">
-                <Label
-                  htmlFor="name"
-                  className="text-foreground font-semibold text-sm"
-                >
-                  Your Name *
-                </Label>
-                <Input
-                  id="name"
-                  placeholder="Rahul Sharma"
-                  value={form.name}
-                  onChange={(e) => handleChange("name", e.target.value)}
-                  className="bg-background border-border"
-                  required
-                />
-              </div>
+            <div className="flex bg-white/10 rounded-full p-1 gap-1 backdrop-blur-sm border border-white/20">
+              <button
+                type="button"
+                onClick={() => setActiveTab("form")}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+                  activeTab === "form"
+                    ? "bg-white text-primary shadow"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                <SiWhatsapp className="h-4 w-4" />
+                WhatsApp Form
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab("google")}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+                  activeTab === "google"
+                    ? "bg-white text-primary shadow"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                <SiGoogle className="h-4 w-4" />
+                Google Form
+              </button>
+            </div>
+          </motion.div>
 
-              {/* Phone */}
-              <div className="space-y-2">
-                <Label
-                  htmlFor="phone"
-                  className="text-foreground font-semibold text-sm"
+          {/* Google Form panel */}
+          {activeTab === "google" && (
+            <motion.div
+              key="google"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 16 }}
+              transition={{ duration: 0.3 }}
+              className="bg-card rounded-3xl p-4 md:p-6 shadow-2xl border border-border overflow-hidden"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <SiGoogle className="h-5 w-5 text-primary" />
+                  <span className="font-semibold text-foreground">
+                    Google Booking Form
+                  </span>
+                </div>
+                <a
+                  href={GOOGLE_FORM_EXTERNAL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-sm text-primary hover:underline font-medium"
                 >
-                  Phone Number *
-                </Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="+91 98765 43210"
-                  value={form.phone}
-                  onChange={(e) => handleChange("phone", e.target.value)}
-                  className="bg-background border-border"
-                  required
-                />
+                  <ExternalLink className="h-4 w-4" />
+                  Open in new tab
+                </a>
               </div>
+              <iframe
+                src={GOOGLE_FORM_URL}
+                title="Google Booking Form"
+                width="100%"
+                height="900"
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+                className="rounded-xl w-full"
+                style={{ minHeight: 640 }}
+              >
+                Loading…
+              </iframe>
+              <p className="text-muted-foreground text-xs text-center mt-3 font-body">
+                Having trouble? Use the "Open in new tab" link above.
+              </p>
+            </motion.div>
+          )}
 
-              {/* Package */}
-              <div className="space-y-2 md:col-span-2">
-                <Label className="text-foreground font-semibold text-sm">
-                  Package Interested In
-                </Label>
-                <Select
-                  onValueChange={handlePackageSelect}
-                  disabled={packagesLoading}
-                >
-                  <SelectTrigger className="bg-background border-border">
-                    <SelectValue
-                      placeholder={
-                        packagesLoading
-                          ? "Loading packages..."
-                          : "Select a package"
-                      }
-                    />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="0|General Inquiry">
-                      General Inquiry
-                    </SelectItem>
-                    {packages?.map((pkg) => (
-                      <SelectItem
-                        key={String(pkg.id)}
-                        value={`${pkg.id}|${pkg.name}`}
-                      >
-                        {pkg.name} — ₹
-                        {Number(pkg.pricePerPerson).toLocaleString("en-IN")}
-                        /person
+          {/* WhatsApp / inline form panel */}
+          {activeTab === "form" && (
+            <motion.form
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              onSubmit={handleSubmit}
+              className="bg-card rounded-3xl p-6 md:p-10 shadow-2xl border border-border"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Name */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="name"
+                    className="text-foreground font-semibold text-sm"
+                  >
+                    Your Name *
+                  </Label>
+                  <Input
+                    id="name"
+                    placeholder="Rahul Sharma"
+                    value={form.name}
+                    onChange={(e) => handleChange("name", e.target.value)}
+                    className="bg-background border-border"
+                    required
+                  />
+                </div>
+
+                {/* Phone */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="phone"
+                    className="text-foreground font-semibold text-sm"
+                  >
+                    Phone Number *
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="+91 98765 43210"
+                    value={form.phone}
+                    onChange={(e) => handleChange("phone", e.target.value)}
+                    className="bg-background border-border"
+                    required
+                  />
+                </div>
+
+                {/* Package */}
+                <div className="space-y-2 md:col-span-2">
+                  <Label className="text-foreground font-semibold text-sm">
+                    Package Interested In
+                  </Label>
+                  <Select
+                    onValueChange={handlePackageSelect}
+                    disabled={packagesLoading}
+                  >
+                    <SelectTrigger className="bg-background border-border">
+                      <SelectValue
+                        placeholder={
+                          packagesLoading
+                            ? "Loading packages..."
+                            : "Select a package"
+                        }
+                      />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="0|General Inquiry">
+                        General Inquiry
                       </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                      {packages?.map((pkg) => (
+                        <SelectItem
+                          key={String(pkg.id)}
+                          value={`${pkg.id}|${pkg.name}`}
+                        >
+                          {pkg.name} — ₹
+                          {Number(pkg.pricePerPerson).toLocaleString("en-IN")}
+                          /person
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Guest Count */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="guests"
+                    className="text-foreground font-semibold text-sm"
+                  >
+                    Number of Guests
+                  </Label>
+                  <Input
+                    id="guests"
+                    type="number"
+                    min="1"
+                    max="50"
+                    placeholder="2"
+                    value={form.guestCount}
+                    onChange={(e) => handleChange("guestCount", e.target.value)}
+                    className="bg-background border-border"
+                  />
+                </div>
+
+                {/* Preferred Date */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="date"
+                    className="text-foreground font-semibold text-sm"
+                  >
+                    Preferred Date
+                  </Label>
+                  <Input
+                    id="date"
+                    type="date"
+                    value={form.preferredDate}
+                    onChange={(e) =>
+                      handleChange("preferredDate", e.target.value)
+                    }
+                    className="bg-background border-border"
+                    min={new Date().toISOString().split("T")[0]}
+                  />
+                </div>
+
+                {/* Message */}
+                <div className="space-y-2 md:col-span-2">
+                  <Label
+                    htmlFor="message"
+                    className="text-foreground font-semibold text-sm"
+                  >
+                    Message / Special Requests
+                  </Label>
+                  <Textarea
+                    id="message"
+                    placeholder="Tell us about your group, any special requirements, or questions you have..."
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => handleChange("message", e.target.value)}
+                    className="bg-background border-border resize-none"
+                  />
+                </div>
               </div>
 
-              {/* Guest Count */}
-              <div className="space-y-2">
-                <Label
-                  htmlFor="guests"
-                  className="text-foreground font-semibold text-sm"
-                >
-                  Number of Guests
-                </Label>
-                <Input
-                  id="guests"
-                  type="number"
-                  min="1"
-                  max="50"
-                  placeholder="2"
-                  value={form.guestCount}
-                  onChange={(e) => handleChange("guestCount", e.target.value)}
-                  className="bg-background border-border"
-                />
-              </div>
-
-              {/* Preferred Date */}
-              <div className="space-y-2">
-                <Label
-                  htmlFor="date"
-                  className="text-foreground font-semibold text-sm"
-                >
-                  Preferred Date
-                </Label>
-                <Input
-                  id="date"
-                  type="date"
-                  value={form.preferredDate}
-                  onChange={(e) =>
-                    handleChange("preferredDate", e.target.value)
-                  }
-                  className="bg-background border-border"
-                  min={new Date().toISOString().split("T")[0]}
-                />
-              </div>
-
-              {/* Message */}
-              <div className="space-y-2 md:col-span-2">
-                <Label
-                  htmlFor="message"
-                  className="text-foreground font-semibold text-sm"
-                >
-                  Message / Special Requests
-                </Label>
-                <Textarea
-                  id="message"
-                  placeholder="Tell us about your group, any special requirements, or questions you have..."
-                  rows={4}
-                  value={form.message}
-                  onChange={(e) => handleChange("message", e.target.value)}
-                  className="bg-background border-border resize-none"
-                />
-              </div>
-            </div>
-
-            {/* Submit */}
-            <div className="flex flex-col sm:flex-row gap-3 mt-8">
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-6 text-base rounded-full gap-2"
-              >
-                {isPending ? (
-                  <>
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-5 w-5" />
-                    Submit Inquiry
-                  </>
-                )}
-              </Button>
-              <a
-                href={buildWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1"
-              >
+              {/* Submit */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-8">
                 <Button
-                  type="button"
-                  className="w-full bg-[#25D366] text-white hover:bg-[#1ebe5a] font-semibold py-6 text-base rounded-full gap-2"
+                  type="submit"
+                  disabled={isPending}
+                  className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-6 text-base rounded-full gap-2"
                 >
-                  <SiWhatsapp className="h-5 w-5" />
-                  WhatsApp Directly
+                  {isPending ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5" />
+                      Submit Inquiry
+                    </>
+                  )}
                 </Button>
-              </a>
-            </div>
+                <a
+                  href={buildWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1"
+                >
+                  <Button
+                    type="button"
+                    className="w-full bg-[#25D366] text-white hover:bg-[#1ebe5a] font-semibold py-6 text-base rounded-full gap-2"
+                  >
+                    <SiWhatsapp className="h-5 w-5" />
+                    WhatsApp Directly
+                  </Button>
+                </a>
+              </div>
 
-            <p className="text-muted-foreground text-xs text-center mt-4 font-body">
-              We reply within 2 hours. Your privacy is respected — no spam,
-              ever.
-            </p>
-          </motion.form>
+              <p className="text-muted-foreground text-xs text-center mt-4 font-body">
+                We reply within 2 hours. Your privacy is respected — no spam,
+                ever.
+              </p>
+            </motion.form>
+          )}
         </div>
       </div>
     </section>

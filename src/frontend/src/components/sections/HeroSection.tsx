@@ -3,9 +3,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useState } from "react";
 import { SiWhatsapp } from "react-icons/si";
-import heroTarkarlSunset from "/assets/generated/hero-tarkarli-sunset.dim_1600x900.jpg";
-import monsoonSindhudurg from "/assets/generated/monsoon-sindhudurg.dim_800x600.jpg";
-import preweddingBeach from "/assets/generated/prewedding-beach.dim_800x600.jpg";
+import heroTarkarlSunset from "../../../public/assets/generated/hero-tarkarli-sunset.dim_1600x900.jpg";
+import monsoonSindhudurg from "../../../public/assets/generated/monsoon-sindhudurg.dim_800x600.jpg";
+import preweddingBeach from "../../../public/assets/generated/prewedding-beach.dim_800x600.jpg";
 
 const WHATSAPP_URL =
   "https://wa.me/919876543210?text=Hi,%20I%20want%20to%20book%20a%20package";

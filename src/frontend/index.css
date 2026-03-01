@@ -24,54 +24,54 @@
   :root {
     --radius: 0.75rem;
 
-    /* Forest green palette */
-    --primary: 0.42 0.13 145;
+    /* Deep ocean blue — primary */
+    --primary: 0.38 0.14 225;
     --primary-foreground: 0.98 0.01 90;
 
-    /* Ocean teal */
-    --secondary: 0.52 0.10 205;
+    /* Teal-aqua — secondary */
+    --secondary: 0.55 0.12 195;
     --secondary-foreground: 0.98 0.01 90;
 
-    /* Sunset amber */
-    --accent: 0.72 0.16 65;
-    --accent-foreground: 0.15 0.02 30;
+    /* Warm coral/sunset — accent */
+    --accent: 0.68 0.19 32;
+    --accent-foreground: 0.98 0.01 90;
 
-    /* Warm sand/cream background */
-    --background: 0.97 0.015 85;
-    --foreground: 0.18 0.02 260;
+    /* Crisp white with a warm coastal hint */
+    --background: 0.98 0.008 220;
+    --foreground: 0.15 0.025 230;
 
-    /* Cards slightly warmer */
-    --card: 0.99 0.01 80;
-    --card-foreground: 0.18 0.02 260;
+    /* Cards bright white */
+    --card: 1.0 0.005 220;
+    --card-foreground: 0.15 0.025 230;
 
-    --popover: 0.99 0.01 80;
-    --popover-foreground: 0.18 0.02 260;
+    --popover: 1.0 0.005 220;
+    --popover-foreground: 0.15 0.025 230;
 
-    /* Muted sage */
-    --muted: 0.88 0.04 145;
-    --muted-foreground: 0.45 0.04 145;
+    /* Muted ocean mist */
+    --muted: 0.88 0.04 215;
+    --muted-foreground: 0.48 0.05 220;
 
     --destructive: 0.577 0.245 27.325;
     --destructive-foreground: 0.985 0 0;
 
-    --border: 0.84 0.05 145;
-    --input: 0.84 0.05 145;
-    --ring: 0.42 0.13 145;
+    --border: 0.85 0.04 215;
+    --input: 0.85 0.04 215;
+    --ring: 0.38 0.14 225;
 
-    --chart-1: 0.646 0.222 41.116;
-    --chart-2: 0.52 0.10 205;
-    --chart-3: 0.42 0.13 145;
-    --chart-4: 0.828 0.189 84.429;
-    --chart-5: 0.72 0.16 65;
+    --chart-1: 0.68 0.19 32;
+    --chart-2: 0.55 0.12 195;
+    --chart-3: 0.38 0.14 225;
+    --chart-4: 0.75 0.16 55;
+    --chart-5: 0.50 0.14 285;
 
-    --sidebar: 0.97 0.015 85;
-    --sidebar-foreground: 0.18 0.02 260;
-    --sidebar-primary: 0.42 0.13 145;
+    --sidebar: 0.98 0.008 220;
+    --sidebar-foreground: 0.15 0.025 230;
+    --sidebar-primary: 0.38 0.14 225;
     --sidebar-primary-foreground: 0.98 0.01 90;
-    --sidebar-accent: 0.88 0.04 145;
-    --sidebar-accent-foreground: 0.18 0.02 260;
-    --sidebar-border: 0.84 0.05 145;
-    --sidebar-ring: 0.42 0.13 145;
+    --sidebar-accent: 0.88 0.04 215;
+    --sidebar-accent-foreground: 0.15 0.025 230;
+    --sidebar-border: 0.85 0.04 215;
+    --sidebar-ring: 0.38 0.14 225;
   }
 
   * {
@@ -101,37 +101,37 @@
     text-wrap: balance;
   }
 
-  /* Tropical gradient mesh backgrounds */
+  /* Ocean gradient mesh backgrounds */
   .bg-jungle-mesh {
-    background-color: oklch(0.42 0.13 145);
+    background-color: oklch(0.38 0.14 225);
     background-image:
-      radial-gradient(ellipse at 0% 100%, oklch(0.52 0.10 205 / 0.4) 0%, transparent 60%),
-      radial-gradient(ellipse at 100% 0%, oklch(0.72 0.16 65 / 0.3) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, oklch(0.38 0.12 155 / 0.5) 0%, transparent 70%);
+      radial-gradient(ellipse at 0% 100%, oklch(0.55 0.12 195 / 0.45) 0%, transparent 60%),
+      radial-gradient(ellipse at 100% 0%, oklch(0.68 0.19 32 / 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, oklch(0.30 0.15 235 / 0.5) 0%, transparent 70%);
   }
 
   .bg-sunset-mesh {
-    background-color: oklch(0.22 0.04 30);
+    background-color: oklch(0.20 0.06 230);
     background-image:
-      radial-gradient(ellipse at 0% 100%, oklch(0.42 0.13 145 / 0.3) 0%, transparent 50%),
-      radial-gradient(ellipse at 100% 0%, oklch(0.72 0.16 65 / 0.5) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 80%, oklch(0.52 0.10 205 / 0.25) 0%, transparent 55%);
+      radial-gradient(ellipse at 0% 100%, oklch(0.38 0.14 225 / 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 0%, oklch(0.68 0.19 32 / 0.55) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, oklch(0.55 0.12 195 / 0.3) 0%, transparent 55%);
   }
 
   .bg-sand-texture {
-    background-color: oklch(0.97 0.015 85);
+    background-color: oklch(0.98 0.008 220);
     background-image:
-      radial-gradient(ellipse at 30% 20%, oklch(0.88 0.04 145 / 0.5) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 70%, oklch(0.72 0.16 65 / 0.15) 0%, transparent 50%);
+      radial-gradient(ellipse at 30% 20%, oklch(0.88 0.04 215 / 0.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 70%, oklch(0.68 0.19 32 / 0.12) 0%, transparent 50%);
   }
 
-  /* Monsoon green */
+  /* Deep ocean navy */
   .bg-monsoon-green {
-    background-color: oklch(0.25 0.08 145);
+    background-color: oklch(0.22 0.09 230);
     background-image:
-      radial-gradient(ellipse at 0% 0%, oklch(0.42 0.13 145 / 0.6) 0%, transparent 50%),
-      radial-gradient(ellipse at 100% 100%, oklch(0.52 0.10 205 / 0.4) 0%, transparent 60%),
-      radial-gradient(ellipse at 50% 50%, oklch(0.30 0.10 150 / 0.8) 0%, transparent 70%);
+      radial-gradient(ellipse at 0% 0%, oklch(0.38 0.14 225 / 0.6) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 100%, oklch(0.55 0.12 195 / 0.45) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 50%, oklch(0.28 0.12 235 / 0.8) 0%, transparent 70%);
   }
 
   /* Scrollbar */
@@ -139,10 +139,10 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: oklch(0.97 0.015 85);
+    background: oklch(0.98 0.008 220);
   }
   ::-webkit-scrollbar-thumb {
-    background: oklch(0.42 0.13 145);
+    background: oklch(0.38 0.14 225);
     border-radius: 3px;
   }
 }

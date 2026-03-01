@@ -12,6 +12,7 @@ import type { Principal } from '@icp-sdk/core/principal';
 
 export type Category = { 'couples' : null } |
   { 'prewedding' : null } |
+  { 'senior' : null } |
   { 'monsoon' : null } |
   { 'friends' : null } |
   { 'family' : null };
